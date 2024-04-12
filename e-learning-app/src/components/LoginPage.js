@@ -30,7 +30,7 @@ function LoginPage() {
         if (response.data.password === password) {
           console.log(response.data);
           toast.success("Login Successfull");
-          navigate("/welcome", { replace: true });
+          navigate("/homePage", { replace: true });
         } else {
           toast.error("Login Failed");
         }
