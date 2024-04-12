@@ -6,6 +6,7 @@ import { Bounce, ToastContainer } from "react-toastify";
 import LoginPage from "./components/LoginPage";
 import RegistrationForm from "./components/RegistrationForm";
 import Output from "./components/Output";
+import ForgetPassword from "./components/ForgetPassword";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
           <Route path="/" Component={LoginPage} exact />
           <Route path="/register" Component={RegistrationForm} exact />
           <Route path="/welcome" Component={Output} exact />
+          <Route path="/forgotpassword" Component={ForgetPassword} exact />
         </Routes>
       </Router>
     </>
