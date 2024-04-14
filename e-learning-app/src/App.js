@@ -2,28 +2,17 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "react-toastify/dist/ReactToastify.css";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import "./App.css";
-import { Bounce, ToastContainer } from "react-toastify";
 import LoginPage from "./components/LoginPage";
 import RegistrationForm from "./components/RegistrationForm";
 import Output from "./components/Output";
 import ForgetPassword from "./components/ForgetPassword";
+import HomePage from "./components/HomePage";
+import ResetPassword from "./components/ResetPassword";
 
 function App() {
   return (
     <>
-      <ToastContainer
-        position="top-center"
-        autoClose={3000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-        transition={Bounce}
-      />
+      
 
       <Router>
         <Routes>
@@ -31,6 +20,8 @@ function App() {
           <Route path="/register" Component={RegistrationForm} exact />
           <Route path="/welcome" Component={Output} exact />
           <Route path="/forgotpassword" Component={ForgetPassword} exact />
+          <Route path="/homePage" Component={HomePage} exact/>
+          <Route path="/resetpassword" Component={ResetPassword} exact/>
         </Routes>
       </Router>
     </>
