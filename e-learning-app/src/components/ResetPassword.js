@@ -13,14 +13,15 @@ function ResetPassword() {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:8080/reset-password",
+        "http://localhost:9090/api/eLearning/v1/reset-password",
         {
           password: password,
           token: token,
         }
       );
       // setMessage(response.data);
-      toast.success(response.data);
+      console.log(response.data);
+      toast.success("Password Changed Successfully");
     } catch (error) {
       // setMessage(error.response.data);
       toast.error(error.response.data);

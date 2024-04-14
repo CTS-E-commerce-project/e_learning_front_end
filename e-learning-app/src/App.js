@@ -21,7 +21,7 @@ function App() {
           <Route path="/welcome" Component={Output} exact />
           <Route path="/forgotpassword" Component={ForgetPassword} exact />
           <Route path="/homePage" Component={HomePage} exact/>
-          <Route path="/resetpassword" Component={ResetPassword} exact/>
+          <Route path="/resetpassword/:token" Component={ResetPassword} exact/>
         </Routes>
       </Router>
     </>
