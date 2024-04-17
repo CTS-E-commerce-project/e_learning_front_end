@@ -6,9 +6,12 @@ import { apiUrl,filterData } from "../data";
 import { useState,useEffect } from "react";
 import Spinner from "./Spinner";
 import {toast} from "react-toastify";
+import "./css/HomePage.css";
+import { RiEdit2Fill } from "react-icons/ri";
 
 
 const HomePage = () => { 
+  const[currentPage,setCurrentPage]= useState(null);
   const [courses, setCourses] = useState(null);
   const [loading, setLoading] = useState(true);
   const [category, setCategory] = useState(filterData[0].title);
@@ -33,7 +36,20 @@ const HomePage = () => {
   
 
   return (
-    <div className="min-h-screen flex flex-col bg-bgDark2">
+    <div className="main_div">
+    <div className="sideBar">
+      <div className="user_info button_style">
+        <h3>Hi,</h3>
+        <p>(User Name)</p>
+        <p>User Info</p>
+        <p className="edit_icon"><RiEdit2Fill /></p>
+      </div>
+      <button className="button_style">Liked Courses</button>
+      <button className="button_style">Cart</button>
+      <button className="button_style">All Courses</button>
+      <button className="button_style">About Us</button>
+    </div>
+    <div className="min-h-screen flex flex-col bg-bgDark2 ">
       <div>
         <Nav/>
       </div>
@@ -52,9 +68,8 @@ const HomePage = () => {
           }
         </div>
       </div>
-
-
     </div>
+   </div>
   );
 };
 
