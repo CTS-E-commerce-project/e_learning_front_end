@@ -41,3 +41,20 @@
     /* text-align: right; */
     margin-left: 190px;
 }
+.amount{
+    color: white;
+}
+.addToCart{
+color: white;
+margin-left: 25px;
+border: 1px solid white;
+padding: 5px;
+border-radius: 5px;
+margin-top: -10px;
+font-weight: 400;
+color: rgba(255, 255, 0, 0.831);
+}
+.addToCart:hover{
+    color: greenyellow;
+    border-color: rgba(255, 255, 0, 0.831);
+}

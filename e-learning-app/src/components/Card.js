@@ -43,9 +43,12 @@ const Card = (props) => {
                 </button>
             </div>
         </div>
-        
+        <div className='flex ml-4 mt-5'>
+        <p className='amount'><span className='text-yellow-500'>amount</span>: $1000</p>
+         <button className='addToCart'>Add to cart</button>
+        </div>
 
-        <div className='p-4'>
+        <div className='p-4 mt-[-20px]'>
             <p className="text-white font-semibold text-lg leading-6">{course.title}</p>
             <p className='mt-2 text-white'>
                     {
@@ -55,6 +58,7 @@ const Card = (props) => {
                     }
             </p>
         </div>
+       
     </div>
   )
 }

@@ -25,7 +25,7 @@ const HomePage = () => {
       setCourses(output.data);
     }
     catch(error) {
-        toast.error("Network me koi dikkat hai");
+        toast.error("Network issue");
     }
     setLoading(false);
   }
@@ -34,7 +34,10 @@ const HomePage = () => {
     fetchData();
   }, [])
   
-
+const handleButtonClick=(input)=>{
+  console.log(input);
+    setCurrentPage(input);
+}
   return (
     <div className="main_div">
     <div className="sideBar">
@@ -44,10 +47,10 @@ const HomePage = () => {
         <p>User Info</p>
         <p className="edit_icon"><RiEdit2Fill /></p>
       </div>
-      <button className="button_style">Liked Courses</button>
-      <button className="button_style">Cart</button>
-      <button className="button_style">All Courses</button>
-      <button className="button_style">About Us</button>
+      <button className="button_style" onClick={()=>handleButtonClick(1)}>Liked Courses</button>
+      <button className="button_style" onClick={()=>handleButtonClick(2)}>Cart</button>
+      <button className="button_style" onClick={()=>handleButtonClick(3)}>All Courses</button>
+      <button className="button_style" onClick={()=>handleButtonClick(4)}>About Us</button>
     </div>
     <div className="min-h-screen flex flex-col bg-bgDark2 ">
       <div>
