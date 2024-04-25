@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {FcLike,FcLikePlaceholder} from "react-icons/fc"
 import { toast } from 'react-toastify';
 
@@ -6,6 +6,7 @@ const Card = (props) => {
     let course = props.course;
     let likedCourses = props.likedCourses;
     let setLikedCourses = props.setLikedCourses;
+    const [cart, setCart] = useState([]);
 
     function clickHandler() {
         //logic
@@ -27,6 +28,10 @@ const Card = (props) => {
             toast.success("Liked Successfully");
         }
     }
+
+    const  addCardHandler =() =>{
+        setCart()
+    }
   return (
     <div className='w-[300px] bg-bgDark bg-opacity-80 rounded-md overflow-hidden'>
         <div className='relative'>
@@ -44,8 +49,8 @@ const Card = (props) => {
             </div>
         </div>
         <div className='flex ml-4 mt-5'>
-        <p className='amount'><span className='text-yellow-500'>amount</span>: $1000</p>
-         <button className='addToCart'>Add to cart</button>
+        <p className='amount'><span className='text-yellow-500'>Amount</span>: $1000</p>
+         <button className='addToCart' onClick={addCardHandler}>Add to cart</button>
         </div>
 
         <div className='p-4 mt-[-20px]'>

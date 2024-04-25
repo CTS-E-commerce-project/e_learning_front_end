@@ -8,36 +8,36 @@ import Spinner from "./Spinner";
 import {toast} from "react-toastify";
 import "./css/HomePage.css";
 import { RiEdit2Fill } from "react-icons/ri";
+import AllCourses from "./AllCourses";
+import LikedCourses from "./LikedCourses";
+import Cart from "./Cart";
+import About from "./About";
 
 
 const HomePage = () => { 
-  const[currentPage,setCurrentPage]= useState(null);
-  const [courses, setCourses] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [category, setCategory] = useState(filterData[0].title);
-
-  async function fetchData() {
-    setLoading(true);
-    try{
-      let response = await fetch(apiUrl);
-      let output = await response.json();
-      ///output -> 
-      setCourses(output.data);
-    }
-    catch(error) {
-        toast.error("Network issue");
-    }
-    setLoading(false);
+  const[currentPage,setCurrentPage]= useState(0);
+  const currentPageView=()=>{
+    if(currentPage==0){
+      return <AllCourses/>;
   }
-
-  useEffect(() => {
-    fetchData();
-  }, [])
+  else if(currentPage==1){
+    return <LikedCourses/>
+  }
+  else if(currentPage==2){
+    return <Cart/>
+  }
+  else if(currentPage==3){
+    return <AllCourses/>
+  }
+  else if(currentPage==4){
+    return <About/>
+  }
+  }
+  const handleButtonClick=(input)=>{
+    console.log(input);
+      setCurrentPage(input);
+  }
   
-const handleButtonClick=(input)=>{
-  console.log(input);
-    setCurrentPage(input);
-}
   return (
     <div className="main_div">
     <div className="sideBar">
@@ -52,26 +52,7 @@ const handleButtonClick=(input)=>{
       <button className="button_style" onClick={()=>handleButtonClick(3)}>All Courses</button>
       <button className="button_style" onClick={()=>handleButtonClick(4)}>About Us</button>
     </div>
-    <div className="min-h-screen flex flex-col bg-bgDark2 ">
-      <div>
-        <Nav/>
-      </div>
-      <div className="bg-bgDark2">
-        <div>
-          <Filter 
-          filterData={filterData}
-            category={category}
-            setCategory={setCategory}
-          />
-        </div>
-        <div className="w-11/12 max-w-[1200px] 
-        mx-auto flex flex-wrap justify-center items-center min-h-[50vh]">
-        {
-            loading ? (<Spinner/>) : (<Cards courses={courses} category={category}/>)
-          }
-        </div>
-      </div>
-    </div>
+    {currentPageView()}
    </div>
   );
 };
