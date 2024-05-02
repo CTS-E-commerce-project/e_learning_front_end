@@ -1,11 +1,19 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import Card from './Card';
 import { useState } from 'react';
+import { Context } from '../utills/Context';
 
 const Cards = (props) => {
     let courses = props.courses;
     let category = props.category;
     const [likedCourses, setLikedCourses] = useState([]);
+    // const {apiData} = useContext(Context);
+    // console.log(apiData);
+    // let courses = apiData;
+
+    useEffect(()=>{
+
+    },[])
     
     function getCourses() {
         if(category === "All") {
@@ -15,6 +23,7 @@ const Cards = (props) => {
                     allCourses.push(courseData);
                 })
             })
+            console.log(allCourses);
             return allCourses;
         }
         else {

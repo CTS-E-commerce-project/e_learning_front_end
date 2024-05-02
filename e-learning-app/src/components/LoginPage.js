@@ -1,14 +1,16 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./css/Style.css";
 import { toast } from "react-toastify";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Navbar from "./Navbar";
 import axios from "axios";
+import { Context } from "../utills/Context";
 
 function LoginPage() {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [password, setPassword] = useState("");
+  const{responseData, setResponseData} = useContext(Context);
   // const [error, setError] = useState("");
   // const [role, setRole] = useState("");
 
@@ -28,7 +30,10 @@ function LoginPage() {
       // setUploadStatus(response.data);
       if (response.data !== null) {
         if (response.data.password === password) {
-          console.log(response.data);
+          setResponseData(response.data);
+          console.log("response data is ", responseData);
+          // console.log(response.data);
+
           toast.success("Login Successfull");
           navigate("/homePage", { replace: true });
         } else {

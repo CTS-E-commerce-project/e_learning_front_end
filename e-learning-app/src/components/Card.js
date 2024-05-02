@@ -1,14 +1,19 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import {FcLike,FcLikePlaceholder} from "react-icons/fc"
 import { toast } from 'react-toastify';
+import { Context } from '../utills/Context';
+import axios from 'axios';
 
 const Card = (props) => {
     let course = props.course;
     let likedCourses = props.likedCourses;
     let setLikedCourses = props.setLikedCourses;
+    const {responseData} = useContext(Context);
+    let phoneNo = responseData.phoneNumber;
     const [cart, setCart] = useState([]);
 
     function clickHandler() {
+        console.log(course.id);
         //logic
         if(likedCourses.includes(course.id)) {
             //pehle se like hua pada tha
@@ -29,9 +34,20 @@ const Card = (props) => {
         }
     }
 
-    const  addCardHandler =() =>{
-        setCart()
-    }
+    const  addToCardHandler = (e,courseId) =>{
+        e.preventDefault();
+        axios.post(
+        "http://localhost:9090/api/eLearning/v1/saveToCart",
+        {
+            courseId: courseId,
+            phoneNo: phoneNo,
+        }
+      ).then((response)=>{
+        toast.success(`Added to cart successfully`);
+      });
+      
+      };
+
   return (
     <div className='w-[300px] bg-bgDark bg-opacity-80 rounded-md overflow-hidden'>
         <div className='relative'>
@@ -50,7 +66,7 @@ const Card = (props) => {
         </div>
         <div className='flex ml-4 mt-5'>
         <p className='amount'><span className='text-yellow-500'>Amount</span>: $1000</p>
-         <button className='addToCart' onClick={addCardHandler}>Add to cart</button>
+         <button className='addToCart' onClick={(e)=>addToCardHandler(e,course.id)}>Add to cart</button>
         </div>
 
         <div className='p-4 mt-[-20px]'>

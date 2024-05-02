@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import Nav from "./Nav";
 import Cards from "./Cards";
 import Filter from "./Filter";
@@ -12,9 +12,13 @@ import AllCourses from "./AllCourses";
 import LikedCourses from "./LikedCourses";
 import Cart from "./Cart";
 import About from "./About";
+import { Context } from "../utills/Context";
+import { useNavigate } from "react-router-dom";
 
 
 const HomePage = () => { 
+  const navigate = useNavigate();
+  const {responseData} = useContext(Context);
   const[currentPage,setCurrentPage]= useState(0);
   const currentPageView=()=>{
     if(currentPage==0){
@@ -37,16 +41,17 @@ const HomePage = () => {
     console.log(input);
       setCurrentPage(input);
   }
-  
+
   return (
     <div className="main_div">
     <div className="sideBar">
       <div className="user_info button_style">
         <h3>Hi,</h3>
-        <p>(User Name)</p>
-        <p>User Info</p>
+        <p>{responseData.userName}</p>
+        <p>Number({responseData.phoneNumber})</p>
         <p className="edit_icon"><RiEdit2Fill /></p>
       </div>
+      
       <button className="button_style" onClick={()=>handleButtonClick(1)}>Liked Courses</button>
       <button className="button_style" onClick={()=>handleButtonClick(2)}>Cart</button>
       <button className="button_style" onClick={()=>handleButtonClick(3)}>All Courses</button>
