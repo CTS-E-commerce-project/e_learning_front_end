@@ -19,20 +19,25 @@ const AllCourses = () => {
   const{cartCourses,setCartCourses} = useContext(Context);
   const{responseData} = useContext(Context);
 
-  async function fetchData() {
+   function fetchData() {
     setLoading(true);
-    try{
-      let response = await fetch(apiUrl);
-      let output = await response.json();
-      ///output -> 
-        setCourses(output.data);
-        setApiData(output.data);
-        console.log(output.data);
-    }
-    catch(error) {
-        toast.error("Network issue");
-    }
-    setLoading(false);
+    // try{
+    //   let response = await fetch(apiUrl);
+    //   let output = await response.json();
+    //   ///output -> 
+    //     setCourses(output.data);
+    //     setApiData(output.data);
+    //     console.log(output.data);
+    // }
+    // catch(error) {
+    //     toast.error("Network issue");
+    // }
+    axios.get("http://localhost:9090/api/eLearning/v1/getAllCourses").then(res=>{
+      setCourses(res.data);
+      setApiData(res.data);
+      setLoading(false);
+      console.log(res.data);
+    })
   }
 
   const fetchCartItems = () =>{

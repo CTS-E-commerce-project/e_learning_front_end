@@ -14,6 +14,8 @@ import Cart from "./Cart";
 import About from "./About";
 import { Context } from "../utills/Context";
 import { useNavigate } from "react-router-dom";
+import AllUsers from "./AllUsers";
+import ViewCourses from "./ViewCourses";
 
 
 const HomePage = () => { 
@@ -36,6 +38,12 @@ const HomePage = () => {
   else if(currentPage==4){
     return <About/>
   }
+  else if(currentPage ==5){
+    return <AllUsers/>
+  }
+  else if(currentPage ==6){
+    return <ViewCourses/>
+  }
   }
   const handleButtonClick=(input)=>{
     console.log(input);
@@ -54,7 +62,11 @@ const HomePage = () => {
       
       <button className="button_style" onClick={()=>handleButtonClick(1)}>Liked Courses</button>
       <button className="button_style" onClick={()=>handleButtonClick(2)}>Cart</button>
-      <button className="button_style" onClick={()=>handleButtonClick(3)}>All Courses</button>
+      <button className="button_style" onClick={()=>handleButtonClick(3)}>Courses</button>
+      {responseData.role ==="admin"? <button className="button_style" onClick={()=>handleButtonClick(5)}>View users</button>:
+      null}
+      {responseData.role ==="admin"? <button className="button_style" onClick={()=>handleButtonClick(6)}>view Courses</button>:
+      null}
       <button className="button_style" onClick={()=>handleButtonClick(4)}>About Us</button>
     </div>
     {currentPageView()}
