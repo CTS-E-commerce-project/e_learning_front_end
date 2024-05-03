@@ -5,15 +5,16 @@ import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-quartz.css";
 import axios from 'axios';
 import "bootstrap/dist/css/bootstrap.min.css";
+import Nav from './Nav';
 export default function AllUsers() {
-
+ 
   const [rowData, setRowData] = useState([]);
   const [, setGridApi] = useState(null);
-
+ 
   useEffect(() => {
     fetchUserData();
   }, []);
-
+ 
   const fetchUserData = async () => {
     try {
       const response = await axios.get("http://localhost:9090/api/eLearning/v1/getAllUsers");
@@ -24,11 +25,11 @@ export default function AllUsers() {
       console.error("Error fetching user data:", error);
     }
   };
-
+ 
   const onGridReady = (params) => {
     setGridApi(params.api);
   };
-
+ 
   const columnDefs = [
     { headerName: "NAME", field: "userName" },
     { headerName: "Email", field: "userEmail" },
@@ -36,22 +37,22 @@ export default function AllUsers() {
     // { headerName: "Address", field: "address" }
     // Add more column definitions as needed
   ];
-
+ 
   const defaultColDef = {
     filter: true, // Enable filtering by default
     sortable: true, // Enable sorting by default
     flex: 1,
     minWidth: 150,
   };
-
-
+ 
+ 
   return (
     <>
-      {/* <div className="min-h-screen flex-col bg-bgDark2 "> */}
-        {/* <div>
+      <div className="min-h-screen flex-col bg-bgDark2 w-[1200px]">
+        <div>
           <Nav title="Registered User" />
-        </div> */}
-        {/* <div className="bg-bgDark2"> */}
+        </div>
+         <div className="bg-bgDark2">
           <div
             className="ag-theme-quartz"
             style={{ height: "590px", width: "100%" }}
@@ -66,8 +67,9 @@ export default function AllUsers() {
               quickFilterText={''} // Enable quick filter
             />
           </div>
-        {/* </div> */}
-      {/* </div> */}
+         </div>
+       </div>
     </>
   )
 }
+ 

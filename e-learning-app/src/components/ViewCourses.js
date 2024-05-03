@@ -4,6 +4,7 @@ import "./css/Style.css";
 import { AgGridReact } from 'ag-grid-react';
 import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-quartz.css";
+import Nav from './Nav';
 
 export default function ViewCourses() {
   const [rowData, setRowData] = useState([]);
@@ -47,11 +48,11 @@ export default function ViewCourses() {
 
   return (
     <>
-      {/* <div className="min-h-screen flex-col bg-bgDark2 "> */}
-        {/* <div>
-          <Nav title="Registered User" />
-        </div> */}
-        {/* <div className="bg-bgDark2"> */}
+      <div className="min-h-screen flex-col bg-bgDark2 w-[1200px]">
+        <div>
+          <Nav title="Registered Courses" />
+        </div>
+        <div className="bg-bgDark2">
           <div
             className="ag-theme-quartz"
             style={{ height: "590px", width: "100%" }}
@@ -66,8 +67,8 @@ export default function ViewCourses() {
               quickFilterText={''} // Enable quick filter
             />
           </div>
-        {/* </div> */}
-      {/* </div> */}
+        </div>
+      </div>
     </>
   )
 }
