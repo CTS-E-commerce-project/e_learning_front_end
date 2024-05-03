@@ -5,6 +5,7 @@ import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-quartz.css";
 import axios from 'axios';
 import "bootstrap/dist/css/bootstrap.min.css";
+import Nav from './Nav';
 export default function AllUsers() {
 
   const [rowData, setRowData] = useState([]);
@@ -47,11 +48,11 @@ export default function AllUsers() {
 
   return (
     <>
-      {/* <div className="min-h-screen flex-col bg-bgDark2 "> */}
-        {/* <div>
+      <div className="min-h-screen flex-col bg-bgDark2 w-[1200px]"> 
+        <div>
           <Nav title="Registered User" />
-        </div> */}
-        {/* <div className="bg-bgDark2"> */}
+        </div> 
+         <div className="bg-bgDark2">
           <div
             className="ag-theme-quartz"
             style={{ height: "590px", width: "100%" }}
@@ -66,8 +67,8 @@ export default function AllUsers() {
               quickFilterText={''} // Enable quick filter
             />
           </div>
-        {/* </div> */}
-      {/* </div> */}
+         </div> 
+       </div> 
     </>
   )
 }
