@@ -60,7 +60,7 @@ const HomePage = () => {
       <div className="user_info button_style">
         <h3>H<span style={{color:'#FF5733 '}}>i</span>,</h3>
         <p style={{color:'#FF9933  '}}>{responseData.userName}</p>
-        <p>Number({responseData.phoneNumber})</p>
+        <p>Number(<span style={{borderBottom:'1px solid #FF9933'}}>{responseData.phoneNumber}</span>)</p>
         <p className="edit_icon"><RiEdit2Fill /></p>
       </div>
       
@@ -69,7 +69,7 @@ const HomePage = () => {
       <button className="button_style" onClick={()=>handleButtonClick(3)}>Courses</button>
       {responseData.role ==="admin"? <button className="button_style" onClick={()=>handleButtonClick(5)}>View users</button>:
       null}
-      {responseData.role ==="admin"? <button className="button_style" onClick={()=>handleButtonClick(6)}>view Courses</button>:
+      {responseData.role ==="admin"? <button className="button_style" onClick={()=>handleButtonClick(6)}>View Courses</button>:
       null}
       <button className="button_style" onClick={()=>handleButtonClick(4)}>About Us</button>
       <button className="button_style" onClick={()=>handleButtonClick(7)}>Log Out</button>

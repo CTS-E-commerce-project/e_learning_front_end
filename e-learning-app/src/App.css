@@ -36,3 +36,9 @@
     transform: rotate(360deg);
   }
 }
+.enptyCart{
+  color: rgba(240, 248, 255, 0.737);
+  margin-left: -50px;
+  font-style:italic;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}

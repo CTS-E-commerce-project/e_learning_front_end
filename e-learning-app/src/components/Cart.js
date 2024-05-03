@@ -9,6 +9,7 @@ import {toast} from "react-toastify";
 import { RiEdit2Fill } from "react-icons/ri";
 import { Context } from "../utills/Context";
 import axios from "axios";
+import EmptyCart from "./EmptyCart";
 
 
 const Cart = () => { 
@@ -50,9 +51,7 @@ const Cart = () => {
         </div>
         <div className="w-11/12 max-w-[1200px] 
         mx-auto flex flex-wrap justify-center items-center min-h-[50vh]">
-        {
-             loading ? (<Spinner/>) : (<Cards courses={courses} category={category}/>) 
-          }
+          {cartCourses.length < 1 ? <EmptyCart/> : loading ? (<Spinner/>) : (<Cards courses={courses} category={category}/>) }
         </div>
       </div>
     </div>
