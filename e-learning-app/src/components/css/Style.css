@@ -106,7 +106,7 @@ label,p {
   box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.5); /* Add focus shadow on the success button */
 }
 
-.ag-theme-alpine {
+/* .ag-theme-alpine {
   font-family: Arial, sans-serif;
 }
 
@@ -129,7 +129,7 @@ label,p {
 
 .ag-row:hover {
   background-color: #e9e9e9;
-}
+} */
 
 /* .ag-theme-quartz, .ag-theme-quartz-dark {
   --ag-foreground-color: rgb(126, 46, 132);
