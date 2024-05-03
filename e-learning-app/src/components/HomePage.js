@@ -54,8 +54,8 @@ const HomePage = () => {
     <div className="main_div">
     <div className="sideBar">
       <div className="user_info button_style">
-        <h3>Hi,</h3>
-        <p>{responseData.userName}</p>
+        <h3>H<span style={{color:'#FF5733 '}}>i</span>,</h3>
+        <p style={{color:'#FF9933  '}}>{responseData.userName}</p>
         <p>Number({responseData.phoneNumber})</p>
         <p className="edit_icon"><RiEdit2Fill /></p>
       </div>
