@@ -16,6 +16,7 @@ import { Context } from "../utills/Context";
 import { useNavigate } from "react-router-dom";
 import AllUsers from "./AllUsers";
 import ViewCourses from "./ViewCourses";
+import LoginPage from "./LoginPage";
 
 
 const HomePage = () => { 
@@ -44,6 +45,9 @@ const HomePage = () => {
   else if(currentPage ==6){
     return <ViewCourses/>
   }
+  else if(currentPage ==7){
+    navigate("/", { replace: true });
+  }
   }
   const handleButtonClick=(input)=>{
     console.log(input);
@@ -68,6 +72,7 @@ const HomePage = () => {
       {responseData.role ==="admin"? <button className="button_style" onClick={()=>handleButtonClick(6)}>view Courses</button>:
       null}
       <button className="button_style" onClick={()=>handleButtonClick(4)}>About Us</button>
+      <button className="button_style" onClick={()=>handleButtonClick(7)}>Log Out</button>
     </div>
     {currentPageView()}
    </div>
