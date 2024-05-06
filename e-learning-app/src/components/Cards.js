@@ -16,23 +16,6 @@ const Cards = (props) => {
 
     },[])
     
-    // function getCourses() {
-    //     if(category === "All") {
-    //         let allCourses = [];
-    //         Object.values(courses).forEach(array => {
-    //             array.forEach(courseData => {
-    //                 allCourses.push(courseData);
-    //             })
-    //         })
-    //         console.log(allCourses);
-    //         return allCourses;
-    //     }
-    //     else {
-    //         //main sirf specific categiry ka data array krunga  
-    //         return courses[category];      
-    //     }
-
-    // }
     function getCourses(){
       if(category === "All"){
         return courses;

@@ -3,6 +3,8 @@ import { FcLike, FcLikePlaceholder } from "react-icons/fc";
 import { toast } from "react-toastify";
 import { Context } from "../utills/Context";
 import axios from "axios";
+import { BsCartCheckFill } from "react-icons/bs";
+import { BsCartDashFill } from "react-icons/bs";
 
 const Card = (props) => {
   let course = props.course;
@@ -53,12 +55,18 @@ const Card = (props) => {
         });
        axios.delete(`http://localhost:9090/api/eLearning/v1/removeCartItem/${courseId}/${phoneNo}`).then((response)=>{
         setCartCourses(cartItems);
-        toast.success(`Removed from cart Successfully`);
+        toast.warning(`Removed from cart`);
        })
         
     }
   };
 
+  const addTocartButton = () =>{
+    return (<div className="cartButton"><span>Add</span><BsCartCheckFill/></div>) ;
+  }
+  const removeTocartButton = () =>{
+    return (<div className="cartButton"><span>Remove</span><BsCartDashFill /></div>) ;
+  }
   return (
     <div className="w-[300px] bg-bgDark bg-opacity-80 rounded-md overflow-hidden">
       <div className="relative">
@@ -85,7 +93,7 @@ const Card = (props) => {
           className="addToCart"
           onClick={(e) => addToCardHandler(e, course.id)}
         >
-          {cartCourses.includes(course.id) ? "Remove from cart" : "Add to cart"}
+          {cartCourses.includes(course.id) ? removeTocartButton() : addTocartButton()}
         </button>
       </div>
 

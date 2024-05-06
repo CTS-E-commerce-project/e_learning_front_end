@@ -1,10 +1,10 @@
 import React from 'react';
-import { GiEmptyMetalBucket } from "react-icons/gi";
+import { MdRemoveShoppingCart } from "react-icons/md";
 
 export default function EmptyCart() {
   return (
     <div>
-<GiEmptyMetalBucket color="#FF9933" fontSize="5rem"/>
+<MdRemoveShoppingCart color="#F8AA5C" fontSize="5rem"/> 
 <h1 className='enptyCart'>Empty Cart</h1>
     </div>
   )
