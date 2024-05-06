@@ -20,16 +20,33 @@ const Card = (props) => {
     //logic
     if (likedCourses.includes(course.id)) {
       //pehle se like hua pada tha
-      setLikedCourses((prev) => prev.filter((cid) => cid !== course.id));
-      toast.warning("like removed");
+      axios.delete(`http://localhost:9090/api/eLearning/v1/removeLikedCourse/${course.id}/${phoneNo}`).then((response)=>{
+        setLikedCourses((prev) => prev.filter((cid) => cid !== course.id));
+        toast.warning("like removed");
+       })
+      
     } else {
       //pehle se like nahi hai ye course
       //insert karna h ye course liked courses me
       if (likedCourses.length === 0) {
-        setLikedCourses([course.id]);
+        axios
+        .post("http://localhost:9090/api/eLearning/v1/saveLikedCourse", {
+          courseId: course.id,
+          phoneNo: phoneNo,
+        })
+        .then((response) => {
+            setLikedCourses([course.id]);
+        });
       } else {
         //non-empty pehle se
-        setLikedCourses((prev) => [...prev, course.id]);
+        axios
+        .post("http://localhost:9090/api/eLearning/v1/saveLikedCourse", {
+          courseId: course.id,
+          phoneNo: phoneNo,
+        })
+        .then((response) => {
+            setLikedCourses((prev) => [...prev, course.id]);
+        });
       }
       toast.success("Liked Successfully");
     }

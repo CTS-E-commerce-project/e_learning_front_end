@@ -7,7 +7,7 @@ const Cards = (props) => {
     let courses = props.courses;
     let category = props.category;
     // let [courses,setCourses]=useState([]);
-    const [likedCourses, setLikedCourses] = useState([]);
+    const {likedCourses, setLikedCourses} = useContext(Context);
     // const {apiData} = useContext(Context);
     // console.log(apiData);
     // let courses = apiData;

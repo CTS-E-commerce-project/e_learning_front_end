@@ -9,7 +9,7 @@ const AppContext = ({children}) =>{
 
    const [responseData, setResponseData] = useState(null);
    const [apiData, setApiData] = useState(null);
-   const [likedCourseData,setLikedCourseData] = useState(null);
+   const [likedCourses,setLikedCourses] = useState(null);
    const [cartCourses,setCartCourses] = useState(null);
     return <Context.Provider 
         value = {{
@@ -17,10 +17,10 @@ const AppContext = ({children}) =>{
             setResponseData, 
             apiData,
             setApiData, 
-            likedCourseData,
-            setLikedCourseData,
+            likedCourses,
+            setLikedCourses,
             cartCourses,
-            setCartCourses
+            setCartCourses,
         }}
     >
         

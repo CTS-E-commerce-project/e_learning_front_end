@@ -8,6 +8,7 @@ import Spinner from "./Spinner";
 import {toast} from "react-toastify";
 import { RiEdit2Fill } from "react-icons/ri";
 import { Context } from "../utills/Context";
+import EmptyLiked from "./EmptyLiked";
 
 
 const LikedCourses = () => { 
@@ -16,30 +17,24 @@ const LikedCourses = () => {
   const [category, setCategory] = useState(filterData[0].title);
   const {apiData, setApiData} = useContext(Context);
   const {responseData} = useContext(Context);
-  const likedCourseUrl = `http://localhost:9090/api/eLearning/v1/getAllLikedCourses/${responseData.phoneNumber}`;
-  const {likedCourseData,setLikedCourseData} = useContext(Context);
-
-  async function fetchData() {
+  const {likedCourses,setLikedCourses} = useContext(Context);
+ 
+ function fetchData() {
     setLoading(true);
-    try{
-      let response = await fetch(likedCourseUrl);
-      let output = await response.json();
-      setLikedCourseData(output);
-      console.log(output);
-    }
-    catch(error) {
-        toast.error("Network issue");
-    }
+    let likedCourseData = apiData.filter((item)=>{
+      return likedCourses.includes(item.id);
+    })
+    setCourses(likedCourseData);
     setLoading(false);
   }
 
   useEffect(() => {
     fetchData();
-  }, [])
+  }, [likedCourses])
   
 
   return (
-    <div className="min-h-screen flex flex-col bg-bgDark2 ">
+    <div className="min-h-screen flex flex-col bg-bgDark2 w-[1200px]">
       <div>
         <Nav title="Liked Courses"/>
       </div>
@@ -53,10 +48,7 @@ const LikedCourses = () => {
         </div>
         <div className="w-11/12 max-w-[1200px] 
         mx-auto flex flex-wrap justify-center items-center min-h-[50vh]">
-        {
-            loading ? (<Spinner/>) : (<Cards courses={apiData} category={category}/>) 
-
-          }
+         {likedCourses.length < 1 ? <EmptyLiked/> : loading ? (<Spinner/>) : (<Cards courses={courses} category={category}/>) }
         </div>
       </div>
     </div>

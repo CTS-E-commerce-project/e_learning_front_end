@@ -4,8 +4,8 @@ import { MdRemoveShoppingCart } from "react-icons/md";
 export default function EmptyCart() {
   return (
     <div>
-<MdRemoveShoppingCart color="#F8AA5C" fontSize="5rem"/> 
-<h1 className='enptyCart'>Empty Cart</h1>
+<div style={{marginLeft:"200px"}}><MdRemoveShoppingCart color="white" fontSize="5rem"/> </div>
+<h1 className='enptyCart'>Explore our courses to improve your skill</h1>
     </div>
   )
 }

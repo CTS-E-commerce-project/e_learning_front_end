@@ -18,6 +18,7 @@ const AllCourses = () => {
   const {apiData, setApiData} = useContext(Context);
   const{cartCourses,setCartCourses} = useContext(Context);
   const{responseData} = useContext(Context);
+  const{likedCourses,setLikedCourses} = useContext(Context);
 
    function fetchData() {
     setLoading(true);
@@ -46,10 +47,17 @@ const AllCourses = () => {
         setCartCourses(response.data);
        })
   }
+  const fetchLikedCourses = () =>{
+    axios.get(`http://localhost:9090/api/eLearning/v1/getAllLikedCourses/${responseData.phoneNumber}`).then((response)=>{
+     console.log(response.data)
+     setLikedCourses(response.data);
+    })
+}
 
   useEffect(() => {
     fetchData();
     fetchCartItems();
+    fetchLikedCourses();
   }, [])
   
 
