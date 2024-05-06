@@ -53,7 +53,7 @@ export default function AllUsers() {
         </div>
          <div className="bg-bgDark2">
           <div
-            className="ag-theme-quartz"
+            className="ag-theme-quartz-dark"
             style={{ height: "590px", width: "100%" }}
           >
             <AgGridReact
