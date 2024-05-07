@@ -17,12 +17,14 @@ import { useNavigate } from "react-router-dom";
 import AllUsers from "./AllUsers";
 import ViewCourses from "./ViewCourses";
 import LoginPage from "./LoginPage";
+import Swal from 'sweetalert2';
 
 
 const HomePage = () => { 
   const navigate = useNavigate();
   const {responseData} = useContext(Context);
   const[currentPage,setCurrentPage]= useState(0);
+  const Swal = require('sweetalert2');
   const currentPageView=()=>{
     if(currentPage==0){
       return <AllCourses/>;
@@ -45,9 +47,38 @@ const HomePage = () => {
   else if(currentPage ==6){
     return <ViewCourses/>
   }
-  else if(currentPage ==7){
-    navigate("/", { replace: true });
   }
+
+  const logOutHandler = () => {
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: "btn btn-success",
+        cancelButton: "btn btn-danger"
+      },
+      buttonsStyling: false
+    });
+    swalWithBootstrapButtons.fire({
+      title: "Are you sure?",
+      text: "You want to log out",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Yes",
+      cancelButtonText: "No",
+      reverseButtons: true,
+      customClass: {
+        confirmButton:'confirmButton',
+        cancelButton:'cancelButton'
+      }
+    }).then((result) => {
+      if (result.isConfirmed) {
+        swalWithBootstrapButtons.fire({
+          title: "Logged out!",
+          text: "You have logged out successfully",
+          icon: "success"
+        });
+        navigate("/", { replace: true });
+      } 
+    });
   }
   const handleButtonClick=(input)=>{
     console.log(input);
@@ -72,7 +103,7 @@ const HomePage = () => {
       {responseData.role ==="admin"? <button className="button_style" onClick={()=>handleButtonClick(6)}>View Courses</button>:
       null}
       <button className="button_style" onClick={()=>handleButtonClick(4)}>About Us</button>
-      <button className="button_style" onClick={()=>handleButtonClick(7)}>Log Out</button>
+      <button className="button_style" onClick={()=>logOutHandler()}>Log Out</button>
     </div>
     {currentPageView()}
    </div>

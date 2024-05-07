@@ -5,6 +5,7 @@ import { AgGridReact } from 'ag-grid-react';
 import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-quartz.css";
 import Nav from './Nav';
+import { CiCirclePlus } from "react-icons/ci";
 
 export default function ViewCourses() {
   const [rowData, setRowData] = useState([]);
@@ -52,6 +53,7 @@ export default function ViewCourses() {
         <div>
           <Nav title="Registered Courses" />
         </div>
+        <div style={{marginLeft:'480px'}} title="Create course"><CiCirclePlus color="white" fontSize="1.5rem"/></div>
         <div className="bg-bgDark2">
           <div
             className="ag-theme-quartz-dark"

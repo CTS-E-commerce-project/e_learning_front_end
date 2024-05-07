@@ -75,3 +75,16 @@ justify-content: center;
     color: greenyellow;
     border-color: rgba(255, 255, 0, 0.831);
 }
+.confirmButton{
+    margin-left: 20px;
+    border:2px solid #22BB33;
+    border-radius: 5px;
+    padding: 3px 5px;
+    font-weight: 600;
+}
+.cancelButton{
+    border:2px solid orange;
+    border-radius: 5px;
+    padding: 3px 5px;
+    font-weight: 600;
+}
